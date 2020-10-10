@@ -1,0 +1,68 @@
+b,
+strong {
+  font-family: map-get-deep($config-typography-weight, bold, font-family);
+  font-weight: map-get-deep($config-typography-weight, bold, font-weight);
+}
+
+// Populate heading styles
+@mixin _set-heading($configs) {
+  @each $type, $styles in $configs {
+    #{$type}, .#{$type} {
+      font-family: map-get($styles, font-family);
+      font-size: map-get($styles, font-size);
+      font-weight: map-get($styles, font-weight);
+      line-height: $typography-line-height;
+      margin-bottom: map-get($styles, margin-bottom);
+    }
+  }
+}
+
+@mixin _set-paragraph-size($sizes) {
+  @each $size, $value in $sizes {
+    .type-#{$size} {
+      font-size: $value;
+    }
+  }
+}
+
+// Populate heading congigurations
+// Usage: h1, .h1, h2 .h2
+@mixin _populate-heading-configs() {
+  @each $bp, $configs in $config-typography-headings {
+    @if $bp == "xs" {
+      @include _set-heading($configs);
+    } @else {
+      @include media-breakpoint-up($bp) {
+        @include _set-heading($configs);
+      }
+    }
+  }
+}
+
+// Populate paragraph congigurations
+@mixin _populate-paragraph-size() {
+  @each $bp, $sizes in $config-typography-paragraph-sizes {
+    @if $bp == "xs" {
+      @include _set-paragraph-size($sizes);
+    } @else {
+      @include media-breakpoint-up($bp) {
+        @include _set-paragraph-size($sizes);
+      }
+    }
+  }
+}
+
+// Populate paragraph weight and set associated font family
+// Usage: .type-thin, .type-regular, .type-bold
+@mixin _populate-parapgraph-weight() {
+  @each $weight, $values in $config-typography-weight {
+    .type-#{$weight} {
+      font-family: map-get-deep($values, font-family);
+      font-weight: map-get-deep($values, font-weight);
+    }
+  }
+}
+
+@include _populate-heading-configs();
+@include _populate-paragraph-size();
+@include _populate-parapgraph-weight();

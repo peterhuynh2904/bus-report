@@ -1,0 +1,18 @@
+@mixin set-root-typography {
+  font-size: 62.5%; // Root font size - 62.5% of 16px = 10px = 1.6rem;
+}
+
+@mixin set-content-typography() {
+  color: map-get-deep($config-typography-body, color);
+  font-family: map-get-deep($config-typography-body, font-family);
+  font-size: map-get-deep($config-typography-body, font-sizes, xs);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: map-get-deep($config-typography-body, font-weight);
+  line-height: map-get-deep($config-typography-body, line-height);
+  text-rendering: optimizeLegibility;
+
+  @include media-breakpoint-up(sm) {
+    font-size: map-get-deep($config-typography-body, font-sizes, sm);
+  }
+}

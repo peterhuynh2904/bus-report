@@ -1,0 +1,22 @@
+$neutral: (
+  0:      #fff,
+  500:    #f5f6fa,
+  600:    #dcdde1
+);
+
+$theme: (
+  primary:                var(--theme-primary, #192a56),
+  secondary:              var(--theme-secondary, #273c75),
+  typography-primary:     var(--theme-typography-primary, #2f3640),
+  typography-secondary:   var(--theme-typography-secondary, #353b48),
+  success:                var(--theme-success, #44bd32),
+  error:                  var(--theme-error, #e84118),
+  active:                 var(--theme-active, #0097e6),
+  inactive:               var(--theme-inactive, #718093),
+);
+
+$foreground-palette: (
+  white:    map-get($neutral, 0),
+  light:    map-get($neutral, 500),
+  dark:     map-get($neutral, 600),
+);

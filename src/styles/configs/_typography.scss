@@ -1,0 +1,65 @@
+$font-weight-light:     300;
+$font-weight-medium:    400;
+$font-weight-bold:      500;
+
+$font-size-xxxl:  5.6rem;
+$font-size-xxl:   4.2rem;
+$font-size-xl:    3.6rem;
+$font-size-l:     2.4rem;
+$font-size-m:     1.6rem;
+$font-size-s:     1.4rem;
+$font-size-xs:    1.2rem;
+$font-size-xxs:   1rem;
+
+$font-stack-regular: #{"Roboto", "sans-serif"};
+
+$typography-line-height: 1.2;
+
+$config-typography-body: (
+  color:  map-get($theme, typography-secondary),
+  font-family: $font-stack-regular,
+  font-weight: $font-weight-medium,
+  font-sizes: (
+    xs: $font-size-xs,
+    sm: $font-size-m
+  ),
+  line-height: $typography-line-height
+);
+
+$config-typography-weight: (
+  thin:     (font-family: $font-stack-regular,   font-weight: $font-weight-light),
+  regular:  (font-family: $font-stack-regular,   font-weight: $font-weight-medium),
+  bold:     (font-family: $font-stack-regular,   font-weight: $font-weight-bold),
+);
+
+$config-typography-headings: (
+  xs: (
+    h1: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-xxl,   margin-bottom: 2.5rem),
+    h2: (font-family: $font-stack-regular,  font-weight: $font-weight-bold,     font-size: $font-size-xl,    margin-bottom: 1rem),
+    h3: (font-family: $font-stack-regular,  font-weight: $font-weight-bold,     font-size: $font-size-l,     margin-bottom: 1rem),
+    h4: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-m,     margin-bottom: 0),
+    h5: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-s,     margin-bottom: 0),
+  ),
+  sm: (
+    h1: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-xxxl,  margin-bottom: 3rem),
+    h2: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-xxl,   margin-bottom: 1rem),
+    h3: (font-family: $font-stack-regular,  font-weight: $font-weight-bold,     font-size: $font-size-xl,    margin-bottom: 1rem),
+    h4: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-l,     margin-bottom: 0),
+    h5: (font-family: $font-stack-regular,  font-weight: $font-weight-medium,   font-size: $font-size-m,     margin-bottom: 0),
+  ),
+);
+
+$config-typography-paragraph-sizes: (
+  xs: (
+    p-sm:   $font-size-xs,
+    p:      $font-size-s,
+    p-md:   $font-size-m,
+    p-lg:   $font-size-l,
+  ),
+  sm: (
+    p-sm:   $font-size-s,
+    p:      $font-size-m,
+    p-md:   $font-size-l,
+    p-lg:   $font-size-xl,
+  )
+);

@@ -1,0 +1,25 @@
+// Utilities
+@import "utilities/map-get-deep";
+@import "utilities/vendors";
+@import "utilities/typography";
+@import "utilities/general";
+
+// Config
+@import "configs/colours";
+@import "configs/general";
+@import "configs/typography";
+
+// Vendor
+@import "vendors/bootstrap/config";
+@import "vendors/bootstrap/bootstrap";
+
+// Global styles
+.app-root {
+  @include set-root-typography;
+
+  .app {
+    @include set-content-typography;
+
+    @import "base/typography";
+  }
+}
