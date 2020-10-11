@@ -1,0 +1,9 @@
+<ng-container *ngFor="let schedule of busSchedule">
+  {{schedule.organisation}}
+</ng-container>
+
+<div *ngIf="alert"
+     class="alert alert-danger js-alert"
+     role="alert">
+  {{alert.code | copyMatrix}}
+</div>
