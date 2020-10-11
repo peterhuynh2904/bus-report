@@ -1,6 +1,7 @@
 import { IBusDeviationStatus } from './bus-schedule.interface';
 
 export const BUS_SCHEDULE_URL = 'assets/data/bus-services-data.json';
+export const BUS_SEND_NOTE_URL = 'assets/data/send-note.json';
 
 export const MIN_DEVIATION_THRESHOLD = 0;
 export const MAX_DEVIATION_THRESHOLD = 220;

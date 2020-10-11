@@ -17,6 +17,11 @@ export const COPY_MATRIX_MAPPING: Record<string, unknown> = {
     },
     error: {
       technical: 'Something unexpected happen. Please try again later.'
+    },
+    note: {
+      placeholder: 'Enter note here',
+      validationError: 'Please enter notes',
+      sendSuccess: 'Your note have been submitted successfully'
     }
   }
 };

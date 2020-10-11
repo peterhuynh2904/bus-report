@@ -1,0 +1,36 @@
+<form *ngIf="organisation && !successAlert"
+      [formGroup]="noteForm"
+      (ngSubmit)="onSubmit()">
+  <div class="form-group mb-20">
+    <textarea class="form-control"
+              rows="5"
+              formControlName="note"
+              placeholder="{{placeholder | copyMatrix}}"></textarea>
+  </div>
+
+  <div>
+    <input class="btn btn--primary"
+           [class.btn--inactive]="inProgress"
+           [disabled]="inProgress"
+           type="submit"
+           value="Submit">
+  </div>
+
+  <div *ngIf="noteForm.controls.note.touched && noteForm.controls.note.invalid"
+       class="alert alert-danger mt-20 js-validation-alert"
+       role="alert">
+       {{validationError | copyMatrix}}
+  </div>
+
+  <div *ngIf="alert"
+       class="alert alert-danger mt-20 js-alert"
+       role="alert">
+       {{alert.code | copyMatrix}}
+  </div>
+</form>
+
+<div *ngIf="successAlert"
+     class="alert alert-success mt-20 js-success-alert"
+     role="alert">
+  {{successAlert.code | copyMatrix}}
+</div>

@@ -58,20 +58,22 @@ describe('BusScheduleService', () => {
 
   describe('submitNote method', () => {
     it('should call DataService send with correct args', () => {
-      spyOn(dataService, 'send').and.returnValue(of(null));
+      spyOn(dataService, 'retrieve').and.returnValue(of(null));
       service.submitNote('test').subscribe();
-      expect(dataService.send).toHaveBeenCalledWith(BUS_SEND_NOTE_URL, 'test');
+      expect(dataService.retrieve).toHaveBeenCalledWith(BUS_SEND_NOTE_URL);
     });
 
     it('should return correct data when success', () => {
-      spyOn(dataService, 'send').and.returnValue(of({ code: 'success', message: 'success' }));
+      spyOn(dataService, 'retrieve').and.returnValue(of({ code: 'success', message: 'success' }));
       let response;
       service.submitNote('test').subscribe((res) => (response = res));
       expect(response).toEqual({ code: 'success', message: 'success' });
     });
 
     it('should return error data when failure', () => {
-      spyOn(dataService, 'send').and.returnValue(throwError({ code: 'error.technical', message: 'We have encountered a technical error' }));
+      spyOn(dataService, 'retrieve').and.returnValue(
+        throwError({ code: 'error.technical', message: 'We have encountered a technical error' })
+      );
       let error;
       service.submitNote('test').subscribe(
         (res) => {},

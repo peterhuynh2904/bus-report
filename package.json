@@ -8,7 +8,7 @@
     "test": "ng test",
     "test:coverage": "ng test --watch false --code-coverage",
     "e2e": "ng e2e",
-    "pre-push": "npm run clean && npm run lint && npm run lint:scss && npm run build",
+    "pre-push": "npm run clean && npm run lint && npm run lint:scss && npm run test:coverage && npm run build",
     "clean": "rimraf dist temp coverage",
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",

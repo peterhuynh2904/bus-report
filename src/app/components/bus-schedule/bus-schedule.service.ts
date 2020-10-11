@@ -40,6 +40,7 @@ export class BusScheduleService {
   }
 
   submitNote(note: string): Observable<ISendNoteResponse | IErrorData> {
-    return this.sendDataService.send(BUS_SEND_NOTE_URL, note);
+    // No POST api available, temporarily ysing retreive
+    return this.sendDataService.retrieve(BUS_SEND_NOTE_URL);
   }
 }
