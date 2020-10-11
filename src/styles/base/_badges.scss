@@ -1,0 +1,28 @@
+$badgesType: (
+  success: map-get-deep($theme, success),
+  danger: map-get-deep($theme, error),
+  primary: map-get-deep($theme, active),
+  secondary: map-get-deep($theme, inactive),
+);
+
+$badgesSize: (
+  small: 8rem
+);
+
+.badge {
+  border-radius: $border-radius;
+  padding: 0.4rem 1rem;
+}
+
+@each $badge, $values in $badgesType {
+  .badge--#{$badge} {
+    background: $values;
+    color: map-get-deep($neutral, 0);
+  }
+}
+
+.badge--small {
+  display: inline-block;
+  text-align: center;
+  width: map-get-deep($badgesSize, small);
+}

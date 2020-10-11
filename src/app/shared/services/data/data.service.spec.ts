@@ -1,11 +1,9 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { of } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 
-import { DataService } from "./data.service";
-import { IErrorData } from '../../interfaces/shared.interface';
+import { DataService } from './data.service';
 
-fdescribe('DataService', () => {
+describe('DataService', () => {
   interface Test {
     testData: string;
   }
@@ -43,9 +41,7 @@ fdescribe('DataService', () => {
       it('should return proper data', () => {
         const testData: Test = { testData: 'testData' };
         let response;
-        service.retrieve('apiUrl').subscribe(
-          res => response = res
-        );
+        service.retrieve('apiUrl').subscribe((res) => (response = res));
         const req = httpMock.expectOne('apiUrl');
         expect(req.request.responseType).toEqual('json');
         expect(req.cancelled).toBeFalsy();
@@ -58,11 +54,12 @@ fdescribe('DataService', () => {
       it('should return error data', () => {
         let error;
         service.retrieve('apiUrl').subscribe(
-          res => { }, err => error = err
+          (res) => {},
+          (err) => (error = err)
         );
         httpMock.expectOne('apiUrl').flush('error', { status: 400, statusText: 'Bad request' });
-        expect(error).toBe({ code: 'error.technical', message: 'We have encountered a technical error' });
+        expect(error).toEqual({ code: 'error.technical', message: 'We have encountered a technical error' });
       });
     });
   });
-})
+});
