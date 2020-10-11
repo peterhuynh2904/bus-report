@@ -26,6 +26,11 @@
 
 ## Development
 
+### Setup
+
+- This project use Node v12
+- Run `npm install` then `npm run start`
+
 ### Framework
 
 - `Angular` version 10.
