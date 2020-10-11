@@ -62,4 +62,39 @@ describe('DataService', () => {
       });
     });
   });
+
+  describe('send', () => {
+    it('should accept args and call httpClient get with correct args and method POST', () => {
+      service.send('apiUrl', { data: 'test' }).subscribe();
+      const req = httpMock.expectOne('apiUrl');
+      expect(req.request.method).toBe('POST');
+      expect(req.request.url).toBe('apiUrl');
+      expect(req.request.body).toEqual({ data: 'test' });
+    });
+
+    describe('when success', () => {
+      it('should return proper data', () => {
+        const testData: Test = { testData: 'testData' };
+        let response;
+        service.send('apiUrl', { data: 'test' }).subscribe((res) => (response = res));
+        const req = httpMock.expectOne('apiUrl');
+        expect(req.request.responseType).toEqual('json');
+        expect(req.cancelled).toBeFalsy();
+        req.flush(testData);
+        expect(response).toEqual(testData);
+      });
+    });
+
+    describe('when failure', () => {
+      it('should return error data', () => {
+        let error;
+        service.send('apiUrl', { data: 'test' }).subscribe(
+          (res) => {},
+          (err) => (error = err)
+        );
+        httpMock.expectOne('apiUrl').flush('error', { status: 400, statusText: 'Bad request' });
+        expect(error).toEqual({ code: 'error.technical', message: 'We have encountered a technical error' });
+      });
+    });
+  });
 });

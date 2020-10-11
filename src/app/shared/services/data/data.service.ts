@@ -22,4 +22,15 @@ export class DataService<T> {
       })
     );
   }
+
+  send(apiUrl: string, data: unknown): Observable<T | IErrorData> {
+    return this.httpClient.post(apiUrl, data).pipe(
+      map((response) => {
+        return get(response, 'data', response) || {};
+      }),
+      catchError(() => {
+        return throwError({ code: 'error.technical', message: 'We have encountered a technical error' });
+      })
+    );
+  }
 }
