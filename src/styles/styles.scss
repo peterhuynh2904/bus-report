@@ -21,5 +21,7 @@
     @include set-content-typography;
 
     @import "base/typography";
+    @import "base/badges";
+    @import "components/expansion";
   }
 }

@@ -1,0 +1,33 @@
+<mat-expansion-panel *ngIf="busSchedule as schedule"
+                     class="expansion expansion--outline mb-md-30 mb-20">
+  <mat-expansion-panel-header>
+    <div class="d-flex align-items-center">
+      <mat-panel-title>
+        <h4 class="js-bus-organisation">{{schedule.organisation}}</h4>
+      </mat-panel-title>
+      <div class="ml-30 ml-sm-auto type-p text-right">
+        <span class="badge badge--secondary">{{schedule.date}}</span>
+      </div>
+    </div>
+  </mat-expansion-panel-header>
+  <div class="my-25">
+    <table class="table table-striped">
+      <thead>
+        <tr class="js-table-header">
+          <th scope="col"><b>{{content.busId | copyMatrix}}</b></th>
+          <th scope="col"><b>{{content.variant | copyMatrix}}</b></th>
+          <th scope="col"><b>{{content.status | copyMatrix}}</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="extendedBusData">
+          <tr *ngFor="let data of extendedBusData" class="js-bus-data">
+            <td>{{data.busId}}</td>
+            <td><span [innerHTML]="data.variantLabel"></span></td>
+            <td><span *ngIf="data.deviation" class="badge badge--{{data.deviation.badge}} badge--small">{{data.deviation.label | copyMatrix}}</span></td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</mat-expansion-panel>

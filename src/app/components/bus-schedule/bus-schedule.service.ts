@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { BUS_SCHEDULE_URL } from '../bus-schedule/bus-schedule.constants';
+import { IBusSchedule, IErrorData } from '../../shared/interfaces/shared.interface';
+import { DataService } from '../../shared/services/data/data.service';
 
-import { IBusSchedule, IErrorData } from 'src/app/shared/interfaces/shared.interface';
-import { DataService } from 'src/app/shared/services/data/data.service';
+import { BUS_SCHEDULE_URL } from '../bus-schedule/bus-schedule.constants';
 
 @Injectable()
 export class BusScheduleService {

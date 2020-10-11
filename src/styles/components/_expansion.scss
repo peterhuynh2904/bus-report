@@ -1,0 +1,30 @@
+$expansion: (
+  outline-light:  map-get-deep($foreground-palette, light),
+  outline-dark:   map-get-deep($foreground-palette, dark)
+);
+
+.expansion {
+  border-radius: $border-radius;
+  box-shadow: $drop-shadow;
+
+  > mat-expansion-panel-header {
+    padding: 2rem 3rem;
+    position: relative;
+
+    &.mat-expanded {
+      &::after {
+        @include position(absolute, null, 3rem, 0, 3rem);
+        border-bottom: $border-width solid map-get-deep($expansion, outline-light);
+        content: "";
+      }
+    }
+  }
+}
+
+.expansion--outline {
+  border: $border-width solid map-get-deep($expansion, outline-light);
+
+  &.mat-expanded {
+    border: $border-width solid map-get-deep($expansion, outline-dark);
+  }
+}

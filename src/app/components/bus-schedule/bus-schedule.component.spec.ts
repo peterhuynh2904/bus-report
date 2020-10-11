@@ -1,15 +1,19 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { of, throwError } from 'rxjs';
 
-import { BusScheduleService } from '../service/bus-schedule.service';
+import { MOCK_BUS_SCHEDULE_RESPONSE } from '../../shared/constants/shared.constants.spec';
+import { CopyMatrixPipeModule } from '../../shared/pipes/copy-matrix/copy-matrix.module';
+import { PipesTestingModule } from '../../shared/pipes/testing/pipes.testing.module';
 
+import { BusScheduleDetailComponent } from './bus-schedule-detail/bus-schedule-detail.component';
+import { BusScheduleDetailService } from './bus-schedule-detail/bus-schedule-detail.service';
 import { BusScheduleComponent } from './bus-schedule.component';
-
-import { MOCK_BUS_SCHEDULE_RESPONSE } from 'src/app/shared/constants/shared.constants.spec';
-import { CopyMatrixPipeModule } from 'src/app/shared/pipes/copy-matrix/copy-matrix.module';
-import { PipesTestingModule } from 'src/app/shared/pipes/testing/pipes.testing.module';
+import { BusScheduleService } from './bus-schedule.service';
 
 describe('BusScheduleComponent', () => {
   let component: BusScheduleComponent;
@@ -18,9 +22,9 @@ describe('BusScheduleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, CopyMatrixPipeModule, PipesTestingModule],
-      declarations: [BusScheduleComponent],
-      providers: [BusScheduleService]
+      imports: [HttpClientTestingModule, BrowserAnimationsModule, CopyMatrixPipeModule, PipesTestingModule, MatExpansionModule],
+      declarations: [BusScheduleComponent, BusScheduleDetailComponent],
+      providers: [BusScheduleService, BusScheduleDetailService]
     }).compileComponents();
   });
 
@@ -33,9 +37,7 @@ describe('BusScheduleComponent', () => {
 
   describe('Component', () => {
     it('should create the app', () => {
-      const fixture = TestBed.createComponent(BusScheduleComponent);
-      const app = fixture.componentInstance;
-      expect(app).toBeTruthy();
+      expect(component).toBeTruthy();
     });
 
     describe('on destroy', () => {
@@ -65,7 +67,7 @@ describe('BusScheduleComponent', () => {
         spyOn(service, 'getSchedule').and.returnValue(throwError({ code: 'test', message: 'test' }));
         component.ngOnInit();
         expect(service.getSchedule).toHaveBeenCalled();
-        expect(component.busSchedule).toEqual([]);
+        expect(component.busSchedule).toBeFalsy();
         expect(component.alert).toEqual({ code: 'test', message: 'test' });
       });
     });
@@ -79,13 +81,13 @@ describe('BusScheduleComponent', () => {
         const element = fixture.debugElement.nativeElement;
         expect(element.querySelector('.js-alert').textContent).toContain('fake-copy-matrix__test');
       });
-    });
 
-    // it('should render title', () => {
-    //   const fixture = TestBed.createComponent(AppComponent);
-    //   fixture.detectChanges();
-    //   const element = fixture.debugElement.nativeElement;
-    //   expect(element.querySelector('.js-page-title').textContent).toContain('fake-copy-matrix__app.pageTitle');
-    // });
+      it('should show BusScheduleDetailComponent when busSchedule data populated', () => {
+        component.busSchedule = MOCK_BUS_SCHEDULE_RESPONSE;
+        fixture.detectChanges();
+        const componentEls = fixture.debugElement.queryAll(By.css('app-bus-schedule-detail'));
+        expect(componentEls.length).toEqual(MOCK_BUS_SCHEDULE_RESPONSE.length);
+      });
+    });
   });
 });

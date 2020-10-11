@@ -1,7 +1,9 @@
-<ng-container *ngFor="let schedule of busSchedule">
-  {{schedule.organisation}}
-</ng-container>
-
+<mat-accordion *ngIf="busSchedule"
+               class="example-headers-align">
+  <ng-container *ngFor="let schedule of busSchedule">
+    <app-bus-schedule-detail [busSchedule]="schedule"></app-bus-schedule-detail>
+  </ng-container>
+</mat-accordion>
 <div *ngIf="alert"
      class="alert alert-danger js-alert"
      role="alert">

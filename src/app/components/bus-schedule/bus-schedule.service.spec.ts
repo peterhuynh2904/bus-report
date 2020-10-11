@@ -3,13 +3,12 @@ import { TestBed } from '@angular/core/testing';
 
 import { of, throwError } from 'rxjs';
 
-import { BUS_SCHEDULE_URL } from '../bus-schedule/bus-schedule.constants';
+import { MOCK_BUS_SCHEDULE_RESPONSE } from '../../shared/constants/shared.constants.spec';
+import { IBusSchedule } from '../../shared/interfaces/shared.interface';
+import { DataService } from '../../shared/services/data/data.service';
 
+import { BUS_SCHEDULE_URL } from './bus-schedule.constants';
 import { BusScheduleService } from './bus-schedule.service';
-
-import { MOCK_BUS_SCHEDULE_RESPONSE } from 'src/app/shared/constants/shared.constants.spec';
-import { IBusSchedule } from 'src/app/shared/interfaces/shared.interface';
-import { DataService } from 'src/app/shared/services/data/data.service';
 
 describe('BusScheduleService', () => {
   let service: BusScheduleService;

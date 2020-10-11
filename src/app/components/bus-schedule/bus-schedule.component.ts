@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
-import { BusScheduleService } from '../service/bus-schedule.service';
+import { IBusSchedule, IErrorData } from '../../shared/interfaces/shared.interface';
 
-import { IBusSchedule, IErrorData } from 'src/app/shared/interfaces/shared.interface';
+import { BusScheduleService } from './bus-schedule.service';
 
 @Component({
   selector: 'app-bus-schedule',
@@ -12,7 +12,7 @@ import { IBusSchedule, IErrorData } from 'src/app/shared/interfaces/shared.inter
 })
 export class BusScheduleComponent implements OnInit, OnDestroy {
   busScheduleSubscription: Subscription;
-  busSchedule: IBusSchedule[] = [];
+  busSchedule: IBusSchedule[];
   alert: IErrorData;
 
   constructor(private service: BusScheduleService) {}

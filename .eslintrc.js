@@ -37,11 +37,11 @@ module.exports = {
           ['@shared', './src/app/shared'],
           ['@vendors', './src/vendors']
         ],
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
+        extensions: ['.ts', '.js', '.json']
       },
       node: {
         moduleDirectory: ['node_modules', 'src/'],
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
+        extensions: ['.ts', '.js', '.json']
       }
     }
   },
