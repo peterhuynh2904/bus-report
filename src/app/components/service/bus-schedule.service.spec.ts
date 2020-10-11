@@ -1,13 +1,15 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+
 import { of, throwError } from 'rxjs';
 
-import { DataService } from 'src/app/shared/services/data/data.service';
-import { MOCK_BUS_SCHEDULE_RESPONSE } from 'src/app/shared/constants/shared.constants.spec';
-
-import { IBusSchedule } from '../bus-schedule/bus-schedule.interface';
-import { BusScheduleService } from './bus-schedule.service';
 import { BUS_SCHEDULE_URL } from '../bus-schedule/bus-schedule.constants';
+import { IBusSchedule } from '../bus-schedule/bus-schedule.interface';
+
+import { BusScheduleService } from './bus-schedule.service';
+
+import { MOCK_BUS_SCHEDULE_RESPONSE } from 'src/app/shared/constants/shared.constants.spec';
+import { DataService } from 'src/app/shared/services/data/data.service';
 
 describe('BusScheduleService', () => {
   let service: BusScheduleService;
@@ -39,19 +41,20 @@ describe('BusScheduleService', () => {
     it('should return correct data when success', () => {
       spyOn(dataService, 'retrieve').and.returnValue(of(MOCK_BUS_SCHEDULE_RESPONSE));
       let response;
-      service.getSchedule().subscribe(
-        res => response = res
-      );
+      service.getSchedule().subscribe((res) => (response = res));
       expect(response).toEqual(MOCK_BUS_SCHEDULE_RESPONSE);
     });
 
     it('should return error data when failure', () => {
-      spyOn(dataService, 'retrieve').and.returnValue(throwError({ code: 'error.technical', message: 'We have encountered a technical error' }));
+      spyOn(dataService, 'retrieve').and.returnValue(
+        throwError({ code: 'error.technical', message: 'We have encountered a technical error' })
+      );
       let error;
       service.getSchedule().subscribe(
-        res => { }, err => error = err
+        (res) => {},
+        (err) => (error = err)
       );
       expect(error).toEqual({ code: 'error.technical', message: 'We have encountered a technical error' });
     });
   });
-})
+});
