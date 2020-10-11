@@ -21,13 +21,20 @@
       </thead>
       <tbody>
         <ng-container *ngIf="extendedBusData">
-          <tr *ngFor="let data of extendedBusData" class="js-bus-data">
+          <tr *ngFor="let data of extendedBusData"
+              class="js-bus-data">
             <td>{{data.busId}}</td>
             <td><span [innerHTML]="data.variantLabel"></span></td>
-            <td><span *ngIf="data.deviation" class="badge badge--{{data.deviation.badge}} badge--small">{{data.deviation.label | copyMatrix}}</span></td>
+            <td><span *ngIf="data.deviation"
+                    class="badge badge--{{data.deviation.badge}} badge--small">{{data.deviation.label | copyMatrix}}</span>
+            </td>
           </tr>
         </ng-container>
       </tbody>
     </table>
+  </div>
+
+  <div class="mt-20">
+    <app-bus-schedule-note [organisation]="schedule.organisation"></app-bus-schedule-note>
   </div>
 </mat-expansion-panel>

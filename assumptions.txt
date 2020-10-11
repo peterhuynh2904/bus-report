@@ -1,0 +1,4 @@
+### Assumptions
+
+Assumed deviation threshold is from 0 to 220. i.e: less than 0 is Late, greater than 220 is Early, and On Time is in between
+Ideally, we will need some sort of organisation ID to associate with comment, make do with organisation name for now

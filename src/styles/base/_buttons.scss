@@ -1,0 +1,45 @@
+$buttons: (
+  outline-light: map-get-deep($foreground-palette, light),
+  outline-dark: map-get-deep($foreground-palette, dark),
+  primary-font-size: $font-size-l,
+  primary-font-size-sm: $font-size-m,
+  primary-color:  map-get-deep($neutral, 500),
+  primary-background:  map-get-deep($theme, primary),
+  primary-hover: map-get-deep($theme, secondary),
+  inactive-background: map-get-deep($theme, inactive),
+  inactive-hover: map-get-deep($theme, inactive),
+);
+
+.btn {
+  border: $border-width solid map-get-deep($buttons, outline-light);
+  border-radius: $border-radius;
+  padding: 1rem 2rem;
+
+  &:hover {
+    border: $border-width solid map-get-deep($buttons, outline-dark);
+  }
+}
+
+.btn--primary {
+  background: map-get-deep($buttons, primary-background);
+  color: map-get-deep($buttons, primary-color);
+  font-size: map-get-deep($buttons, primary-font-size);
+  padding: 1.5rem 3rem;
+
+  &:hover {
+    background: map-get-deep($buttons, primary-hover);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: map-get-deep($buttons, primary-font-size-sm);
+    padding: 1rem 2rem;
+  }
+}
+
+.btn--inactive {
+  background: map-get-deep($buttons, inactive-background);
+
+  &:hover {
+    background: map-get-deep($buttons, inactive-hover);
+  }
+}

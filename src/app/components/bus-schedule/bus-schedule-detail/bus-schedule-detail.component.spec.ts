@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,27 +8,28 @@ import { IBusSchedule } from '../../../shared/interfaces/shared.interface';
 import { CopyMatrixPipeModule } from '../../../shared/pipes/copy-matrix/copy-matrix.module';
 import { PipesTestingModule } from '../../../shared/pipes/testing/pipes.testing.module';
 
+import { MOCK_TRANSFORMED_BUSDATA } from '../bus-schedule.constants.spec';
+import { BusScheduleService } from '../bus-schedule.service';
+
 import { BusScheduleDetailComponent } from './bus-schedule-detail.component';
-import { MOCK_TRANSFORMED_BUSDATA } from './bus-schedule-detail.constants.spec';
-import { BusScheduleDetailService } from './bus-schedule-detail.service';
 
 describe('BusScheduleDetailComponent', () => {
   let component: BusScheduleDetailComponent;
   let fixture: ComponentFixture<BusScheduleDetailComponent>;
-  let service: BusScheduleDetailService;
+  let service: BusScheduleService;
   let MOCK: IBusSchedule;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, MatExpansionModule, CopyMatrixPipeModule, PipesTestingModule],
+      imports: [HttpClientTestingModule, BrowserAnimationsModule, MatExpansionModule, CopyMatrixPipeModule, PipesTestingModule],
       declarations: [BusScheduleDetailComponent],
-      providers: [BusScheduleDetailService]
+      providers: [BusScheduleService]
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BusScheduleDetailComponent);
     component = fixture.componentInstance;
-    service = TestBed.inject(BusScheduleDetailService);
+    service = TestBed.inject(BusScheduleService);
     MOCK = MOCK_BUS_SCHEDULE_RESPONSE[0];
     component.busSchedule = MOCK;
   });

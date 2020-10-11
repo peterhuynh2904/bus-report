@@ -1,4 +1,4 @@
-import { IBusDataExtended } from './bus-schedule-detail.interface';
+import { IBusDataExtended } from './bus-schedule.interface';
 
 export const MOCK_TRANSFORMED_BUSDATA: IBusDataExtended[] = [
   {

@@ -18,3 +18,8 @@ export interface IBusData {
   routeVariant: string;
   deviationFromTimetable: number;
 }
+
+export interface ISendNoteResponse {
+  code: string;
+  message: string;
+}
