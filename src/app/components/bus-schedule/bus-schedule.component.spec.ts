@@ -11,7 +11,6 @@ import { CopyMatrixPipeModule } from '../../shared/pipes/copy-matrix/copy-matrix
 import { PipesTestingModule } from '../../shared/pipes/testing/pipes.testing.module';
 
 import { BusScheduleDetailComponent } from './bus-schedule-detail/bus-schedule-detail.component';
-import { BusScheduleDetailService } from './bus-schedule-detail/bus-schedule-detail.service';
 import { BusScheduleComponent } from './bus-schedule.component';
 import { BusScheduleService } from './bus-schedule.service';
 
@@ -24,7 +23,7 @@ describe('BusScheduleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, BrowserAnimationsModule, CopyMatrixPipeModule, PipesTestingModule, MatExpansionModule],
       declarations: [BusScheduleComponent, BusScheduleDetailComponent],
-      providers: [BusScheduleService, BusScheduleDetailService]
+      providers: [BusScheduleService]
     }).compileComponents();
   });
 

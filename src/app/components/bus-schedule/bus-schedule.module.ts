@@ -7,14 +7,13 @@ import { CopyMatrixPipeModule } from '../../shared/pipes/copy-matrix/copy-matrix
 import { DataModule } from '../../shared/services/data/data.module';
 
 import { BusScheduleDetailComponent } from './bus-schedule-detail/bus-schedule-detail.component';
-import { BusScheduleDetailService } from './bus-schedule-detail/bus-schedule-detail.service';
 import { BusScheduleComponent } from './bus-schedule.component';
 import { BusScheduleService } from './bus-schedule.service';
 
 @NgModule({
   imports: [CommonModule, BrowserAnimationsModule, DataModule, CopyMatrixPipeModule, MatExpansionModule],
   declarations: [BusScheduleComponent, BusScheduleDetailComponent],
-  providers: [BusScheduleService, BusScheduleDetailService],
+  providers: [BusScheduleService],
   exports: [BusScheduleComponent]
 })
 export class BusScheduleModule {}

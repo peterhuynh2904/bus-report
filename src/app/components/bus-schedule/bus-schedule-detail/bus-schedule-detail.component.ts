@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 
 import { IBusData, IBusSchedule } from '../../../shared/interfaces/shared.interface';
 
-import { IBusDataExtended } from './bus-schedule-detail.interface';
-import { BusScheduleDetailService } from './bus-schedule-detail.service';
+import { IBusDataExtended } from '../bus-schedule.interface';
+import { BusScheduleService } from '../bus-schedule.service';
 
 @Component({
   selector: 'app-bus-schedule-detail',
@@ -21,7 +21,7 @@ export class BusScheduleDetailComponent implements OnInit {
     status: 'schedule.table.status'
   };
 
-  constructor(private service: BusScheduleDetailService) {}
+  constructor(private service: BusScheduleService) {}
 
   ngOnInit(): void {
     this.extendedBusData = this.busSchedule.busData.map((data: IBusData) => {
